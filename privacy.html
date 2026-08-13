@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaya — Privacy Policy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="logo-dot"></div>
+    <div class="name">Kaya</div>
+  </header>
+  <p class="eyebrow">Legal &amp; safety documents</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective &amp; last updated: August 13, 2026 · Published by GrokLayer</p>
+
+  <p>This Privacy Policy explains what information Kaya ("Kaya", "we", "us") collects when
+  you use the Kaya mobile app, why we collect it, who we share it with, and the choices and
+  rights you have — including when you export or delete your data. It applies to all users
+  of Kaya on iOS and Android.</p>
+
+  <p>Kaya is an AI coach/companion. It is explicitly <strong>not</strong> a romantic
+  companion, not a therapist, and not a medical device — see the "What Kaya is not" section
+  in our <a href="terms.html">Terms of Service</a> and our
+  <a href="crisis.html">Crisis &amp; Safety Resources</a> page.</p>
+
+  <h2>1. Information we collect</h2>
+
+  <h3>1.1 Account &amp; sign-in data</h3>
+  <p>Kaya creates an anonymous account for you automatically the first time you open the
+  app — no email or sign-in is required to start. If you choose to link an account so your
+  memories survive a reinstall or new device, you can upgrade using
+  <strong>Sign in with Apple</strong> or <strong>Sign in with Google</strong>. When you do:</p>
+  <ul>
+    <li>Apple or Google shares a unique identifier, and — only if you allow it — your name
+    and email address, with our authentication provider (Firebase Authentication).</li>
+    <li>If you use Apple's "Hide My Email," we only ever see the private relay address
+    Apple generates, never your real one.</li>
+    <li>We do not receive or store your Apple ID or Google account password. Authentication
+    is handled entirely by Apple/Google and Firebase; Kaya never sees your credentials.</li>
+  </ul>
+
+  <h3>1.2 Conversation &amp; memory data</h3>
+  <p>The core of Kaya is that it remembers things about you across sessions. This means we
+  store:</p>
+  <ul>
+    <li>The messages you send and Kaya's replies.</li>
+    <li>Extracted memories — goals, wins, setbacks, and other facts you share — summarized
+    and stored so Kaya can refer back to them later.</li>
+    <li>Vector embeddings of those memories (generated with a pinned, versioned embedding
+    model), used only to let Kaya retrieve relevant memories; they are not human-readable
+    and are never sold or used for advertising.</li>
+  </ul>
+  <p>This data is never silently wiped. If we ever need to migrate the memory system (for
+  example, to a new embedding model), we migrate your data forward — we do not delete it
+  without your request.</p>
+
+  <h3>1.3 Usage, device &amp; diagnostic data</h3>
+  <p>Standard technical data collected via Firebase Analytics and Firebase Crashlytics:
+  device model, OS version, app version, crash logs, and coarse in-app usage events (e.g.
+  "opened check-in," "sent message") used to fix bugs and understand feature usage. This
+  data is aggregated and is not used to build an advertising profile of you.</p>
+
+  <h3>1.4 Push notification token</h3>
+  <p>If you opt in to notifications, we store a Firebase Cloud Messaging device token so
+  Kaya can send you at most one meaningful proactive check-in a day (e.g. "How did the
+  interview go?"). Notification opt-in is never required to use Kaya, and you can turn it
+  off at any time in the in-app notification preference center. We never put sensitive or
+  mental-health-related content in a notification's lock-screen text.</p>
+
+  <h3>1.5 Voice &amp; media</h3>
+  <p>If you send a voice message or other media, the file is uploaded to Cloudflare R2
+  storage, scoped to your account with a signed URL. We validate file type and size on
+  upload.</p>
+
+  <h3>1.6 Purchase data</h3>
+  <p>Subscriptions ("Kaya Plus") are processed by Apple/Google and managed via RevenueCat.
+  We receive subscription status (active/expired/tier) from RevenueCat, never your payment
+  card details.</p>
+
+  <h3>1.7 Advertising data</h3>
+  <p>Free-tier users may see ads served by Google AdMob in peripheral surfaces only. Ads
+  never appear inside the chat or check-in surface. AdMob may collect an advertising
+  identifier and usage data under its own privacy policy to serve and measure ads; Kaya
+  Plus subscribers do not see ads.</p>
+
+  <h2>2. How we use your information</h2>
+  <ul>
+    <li>To operate Kaya's core memory loop: remembering context across sessions and model
+    swaps, and reaching out with relevant, contextual check-ins.</li>
+    <li>To process your messages through our AI providers and generate replies (see §3).</li>
+    <li>To detect crisis-risk language and interrupt the conversation with a referral to
+    real human resources (see our <a href="crisis.html">Crisis &amp; Safety Resources</a>
+    page) — this is a safety feature, not a diagnostic one.</li>
+    <li>To send AI-disclosure reminders (Kaya identifies itself as AI at the start of every
+    session, with a persistent on-screen label and a recurring reminder).</li>
+    <li>To fix bugs, monitor stability, and improve the app.</li>
+    <li>To process subscriptions and, for free-tier users, to serve ads outside the chat
+    experience.</li>
+  </ul>
+  <p>We do not use manipulative engagement patterns (e.g. guilt, "I miss you" messages, or
+  other retention dark-patterns) to keep you using Kaya. Kaya's goal is for you to be doing
+  well, not to maximize time in the app.</p>
+
+  <h2>3. AI processing &amp; sub-processors</h2>
+  <p>Your messages are never sent directly from your phone to an AI provider. They pass
+  through our own serverless proxy (hosted on Vercel), which holds provider API keys
+  server-side and are never present in the app itself. The table below lists who processes
+  your data and why.</p>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr>
+    <tr><td>Google Firebase (Auth, Firestore, Cloud Messaging, Remote Config, Analytics, Crashlytics)</td><td>Sign-in, database, push, configuration, diagnostics</td><td>Account ID, messages, memories, device/usage data</td></tr>
+    <tr><td>Vercel</td><td>Stateless serverless proxy for AI calls, memory extraction, and the daily check-in composer</td><td>Message content, in transit only</td></tr>
+    <tr><td>Google (Gemini) / DeepSeek</td><td>Generating Kaya's conversational replies</td><td>Message content + retrieved memory context</td></tr>
+    <tr><td>OpenAI (embeddings API)</td><td>Generating the vector representation of your memories used for retrieval</td><td>Extracted memory text</td></tr>
+    <tr><td>Cloudflare R2</td><td>Storage for voice/media you send</td><td>Uploaded audio/media files</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription management</td><td>Purchase/subscription status</td></tr>
+    <tr><td>Google AdMob</td><td>Ad serving (free tier, non-chat surfaces only)</td><td>Advertising identifier, ad interaction data</td></tr>
+  </table>
+  <p>We do not sell your personal data, and we do not share your conversation content with
+  advertisers.</p>
+
+  <h2>4. Data retention</h2>
+  <p>We retain your conversation and memory data for as long as your account is active, so
+  Kaya can keep functioning as intended. If you delete your account, we delete your
+  messages, memories, embeddings, and media within 30 days, except where we're legally
+  required to retain limited records for longer (e.g. fraud prevention, tax/financial
+  records for purchases).</p>
+
+  <h2>5. Your rights &amp; choices</h2>
+  <ul>
+    <li><strong>Export.</strong> You can download your memory and conversation history as a
+    portable file at any time from Settings.</li>
+    <li><strong>Delete.</strong> You can permanently delete your account and all associated
+    data from Settings, or by emailing us at
+    <a href="mailto:asimsafeer75@gmail.com">asimsafeer75@gmail.com</a>.</li>
+    <li><strong>Access &amp; correction.</strong> You can ask us what data we hold about you
+    and request correction of inaccurate data.</li>
+    <li><strong>Notification opt-out.</strong> Turn off push notifications any time in the
+    in-app preference center.</li>
+    <li><strong>Ad personalization.</strong> Manage ad tracking permissions via your device's
+    system privacy settings (iOS App Tracking Transparency / Android Ads settings).</li>
+  </ul>
+  <p>If you are in the EEA/UK, you have rights under GDPR/UK GDPR (access, rectification,
+  erasure, portability, restriction, objection). If you are a California resident, you have
+  rights under the CCPA/CPRA (know, delete, correct, opt out of sale/sharing — we do not
+  sell personal data). To exercise any of these rights, contact us at the email below.</p>
+
+  <h2>6. Children's privacy</h2>
+  <p>Kaya is not directed at children and is age-rated 17+/18+. We use a neutral date-of-birth
+  age gate at onboarding and do not knowingly collect data from users under the applicable
+  minimum age in their jurisdiction. If we learn a minor has created an account, we will
+  delete it. Users we suspect may be minors receive AI-disclosure reminders at a shorter,
+  1-hour interval as an added safeguard.</p>
+
+  <h2>7. Crisis &amp; safety content</h2>
+  <p>If Kaya detects language suggesting a mental health crisis, it interrupts the
+  conversation and refers you to real human crisis resources — see our
+  <a href="crisis.html">Crisis &amp; Safety Resources</a> page. Kaya does not diagnose,
+  treat, or provide clinical or medical advice, and this detection is a safety guardrail,
+  not a substitute for professional care.</p>
+
+  <h2>8. International data transfers</h2>
+  <p>Kaya is available in the US, UK, and India, and our infrastructure providers (Google
+  Firebase, Vercel, Cloudflare) operate globally. Where your data is transferred
+  internationally, we rely on the safeguards those providers make available (such as
+  Standard Contractual Clauses) to protect it in transit and at rest.</p>
+
+  <h2>9. Security</h2>
+  <p>All data in transit is encrypted (TLS). Your data in Firestore is scoped to your
+  account and protected by security rules that restrict every read/write to your own user
+  record; backend functions that need broader access (e.g. the nightly check-in composer)
+  run only with server-side credentials that never reach the client app.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>If we make a material change to this policy, we'll notify you in-app before it takes
+  effect. Continued use of Kaya after a change takes effect means you accept the updated
+  policy.</p>
+
+  <h2>11. Contact us</h2>
+  <p>GrokLayer<br>
+  Email: <a href="mailto:asimsafeer75@gmail.com">asimsafeer75@gmail.com</a></p>
+
+  <div class="nav-links">
+    <a href="index.html">Legal home</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="crisis.html">Crisis &amp; Safety Resources</a>
+  </div>
+
+  <footer>GrokLayer · Kaya Privacy Policy · Last updated August 13, 2026</footer>
+</div>
+</body>
+</html>
